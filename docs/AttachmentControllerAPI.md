@@ -1,0 +1,324 @@
+# AttachmentControllerAPI
+
+All URIs are relative to *https://api.mailslurp.com*
+
+Method | HTTP request | Description
+------------- | ------------- | -------------
+[**downloadAttachmentAsBase64Encoded**](AttachmentControllerAPI#downloadattachmentasbase64encoded) | **GET** /attachments/{attachmentId}/base64 | Get email attachment as base64 encoded string (alternative to binary responses). To read the content decode the Base64 encoded contents.
+[**downloadAttachmentAsBytes**](AttachmentControllerAPI#downloadattachmentasbytes) | **GET** /attachments/{attachmentId}/bytes | Download attachments. Get email attachment bytes. If you have trouble with byte responses try the &#x60;downloadAttachmentBase64&#x60; response endpoints.
+[**getAttachmentInfo**](AttachmentControllerAPI#getattachmentinfo) | **GET** /attachments/{attachmentId}/metadata | Get email attachment metadata information
+[**uploadAttachment**](AttachmentControllerAPI#uploadattachment) | **POST** /attachments | Upload an attachment for sending using base64 file encoding. Returns an array whose first element is the ID of the uploaded attachment.
+[**uploadAttachmentBytes**](AttachmentControllerAPI#uploadattachmentbytes) | **POST** /attachments/bytes | Upload an attachment for sending using file byte stream input octet stream. Returns an array whose first element is the ID of the uploaded attachment.
+[**uploadMultipartForm**](AttachmentControllerAPI#uploadmultipartform) | **POST** /attachments/multipart | Upload an attachment for sending using a Multipart Form request. Returns an array whose first element is the ID of the uploaded attachment.
+
+
+# **downloadAttachmentAsBase64Encoded**
+```swift
+    open class func downloadAttachmentAsBase64Encoded(attachmentId: String, completion: @escaping (_ data: DownloadAttachmentDto?, _ error: Error?) -> Void)
+```
+
+Get email attachment as base64 encoded string (alternative to binary responses). To read the content decode the Base64 encoded contents.
+
+Returns the specified attachment for a given email as a base 64 encoded string. The response type is application/json. This method is similar to the `downloadAttachment` method but allows some clients to get around issues with binary responses.
+
+### Example 
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import mailslurp
+
+let attachmentId = "attachmentId_example" // String | ID of attachment
+
+// Get email attachment as base64 encoded string (alternative to binary responses). To read the content decode the Base64 encoded contents.
+AttachmentControllerAPI.downloadAttachmentAsBase64Encoded(attachmentId: attachmentId) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **attachmentId** | **String** | ID of attachment | 
+
+### Return type
+
+[**DownloadAttachmentDto**](DownloadAttachmentDto)
+
+### Authorization
+
+[API_KEY](../README#API_KEY)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README#documentation-for-api-endpoints) [[Back to Model list]](../README#documentation-for-models) [[Back to README]](../README)
+
+# **downloadAttachmentAsBytes**
+```swift
+    open class func downloadAttachmentAsBytes(attachmentId: String, completion: @escaping (_ data: Data?, _ error: Error?) -> Void)
+```
+
+Download attachments. Get email attachment bytes. If you have trouble with byte responses try the `downloadAttachmentBase64` response endpoints.
+
+Returns the specified attachment for a given email as a stream / array of bytes. You can find attachment ids in email responses endpoint responses. The response type is application/octet-stream.
+
+### Example 
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import mailslurp
+
+let attachmentId = "attachmentId_example" // String | ID of attachment
+
+// Download attachments. Get email attachment bytes. If you have trouble with byte responses try the `downloadAttachmentBase64` response endpoints.
+AttachmentControllerAPI.downloadAttachmentAsBytes(attachmentId: attachmentId) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **attachmentId** | **String** | ID of attachment | 
+
+### Return type
+
+**Data**
+
+### Authorization
+
+[API_KEY](../README#API_KEY)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/octet-stream
+
+[[Back to top]](#) [[Back to API list]](../README#documentation-for-api-endpoints) [[Back to Model list]](../README#documentation-for-models) [[Back to README]](../README)
+
+# **getAttachmentInfo**
+```swift
+    open class func getAttachmentInfo(attachmentId: String, completion: @escaping (_ data: AttachmentMetaData?, _ error: Error?) -> Void)
+```
+
+Get email attachment metadata information
+
+Returns the metadata for an attachment. It is saved separately to the content of the attachment. Contains properties `name` and `content-type` and `content-length` in bytes for a given attachment.
+
+### Example 
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import mailslurp
+
+let attachmentId = "attachmentId_example" // String | ID of attachment
+
+// Get email attachment metadata information
+AttachmentControllerAPI.getAttachmentInfo(attachmentId: attachmentId) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **attachmentId** | **String** | ID of attachment | 
+
+### Return type
+
+[**AttachmentMetaData**](AttachmentMetaData)
+
+### Authorization
+
+[API_KEY](../README#API_KEY)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README#documentation-for-api-endpoints) [[Back to Model list]](../README#documentation-for-models) [[Back to README]](../README)
+
+# **uploadAttachment**
+```swift
+    open class func uploadAttachment(uploadOptions: UploadAttachmentOptions, completion: @escaping (_ data: [String]?, _ error: Error?) -> Void)
+```
+
+Upload an attachment for sending using base64 file encoding. Returns an array whose first element is the ID of the uploaded attachment.
+
+Email attachments are essentially files with meta data. Files are byte arrays and the meta data is a content type and a filename. These properties allow email clients to display the filename and icon etc. When sending emails with attachments first upload each attachment with an upload endpoint. Record the returned attachment ID and use it with subsequent email sending. For legacy reasons the ID is returned as the first element in an array. Only a single ID is ever returned. To send the attachments pass a list of attachment IDs with `SendEmailOptions` when sending an email. Using the upload endpoints prior to sending mean attachments can easily be reused.
+
+### Example 
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import mailslurp
+
+let uploadOptions = UploadAttachmentOptions(base64Contents: "base64Contents_example", contentType: "contentType_example", filename: "filename_example") // UploadAttachmentOptions | uploadOptions
+
+// Upload an attachment for sending using base64 file encoding. Returns an array whose first element is the ID of the uploaded attachment.
+AttachmentControllerAPI.uploadAttachment(uploadOptions: uploadOptions) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **uploadOptions** | [**UploadAttachmentOptions**](UploadAttachmentOptions) | uploadOptions | 
+
+### Return type
+
+**[String]**
+
+### Authorization
+
+[API_KEY](../README#API_KEY)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README#documentation-for-api-endpoints) [[Back to Model list]](../README#documentation-for-models) [[Back to README]](../README)
+
+# **uploadAttachmentBytes**
+```swift
+    open class func uploadAttachmentBytes(string: String? = nil, filename: String? = nil, byteArray: Data? = nil, completion: @escaping (_ data: [String]?, _ error: Error?) -> Void)
+```
+
+Upload an attachment for sending using file byte stream input octet stream. Returns an array whose first element is the ID of the uploaded attachment.
+
+Email attachments are essentially files with meta data. Files are byte arrays and the meta data is a content type and a filename. These properties allow email clients to display the filename and icon etc. When sending emails with attachments first upload each attachment with an upload endpoint. Record the returned attachment ID and use it with subsequent email sending. For legacy reasons the ID is returned as the first element in an array. Only a single ID is ever returned. To send the attachments pass a list of attachment IDs with `SendEmailOptions` when sending an email. Using the upload endpoints prior to sending mean attachments can easily be reused.
+
+### Example 
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import mailslurp
+
+let string = "string_example" // String | Optional contentType for file. For instance `application/pdf` (optional)
+let filename = "filename_example" // String | Optional filename to save upload with (optional)
+let byteArray = 987 // Data | Byte array request body (optional)
+
+// Upload an attachment for sending using file byte stream input octet stream. Returns an array whose first element is the ID of the uploaded attachment.
+AttachmentControllerAPI.uploadAttachmentBytes(string: string, filename: filename, byteArray: byteArray) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **string** | **String** | Optional contentType for file. For instance &#x60;application/pdf&#x60; | [optional] 
+ **filename** | **String** | Optional filename to save upload with | [optional] 
+ **byteArray** | **Data** | Byte array request body | [optional] 
+
+### Return type
+
+**[String]**
+
+### Authorization
+
+[API_KEY](../README#API_KEY)
+
+### HTTP request headers
+
+ - **Content-Type**: application/octet-stream
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README#documentation-for-api-endpoints) [[Back to Model list]](../README#documentation-for-models) [[Back to README]](../README)
+
+# **uploadMultipartForm**
+```swift
+    open class func uploadMultipartForm(file: URL, contentType: String? = nil, filename: String? = nil, xFilename: String? = nil, completion: @escaping (_ data: [String]?, _ error: Error?) -> Void)
+```
+
+Upload an attachment for sending using a Multipart Form request. Returns an array whose first element is the ID of the uploaded attachment.
+
+Email attachments are essentially files with meta data. Files are byte arrays and the meta data is a content type and a filename. These properties allow email clients to display the filename and icon etc. When sending emails with attachments first upload each attachment with an upload endpoint. Record the returned attachment ID and use it with subsequent email sending. For legacy reasons the ID is returned as the first element in an array. Only a single ID is ever returned. To send the attachments pass a list of attachment IDs with `SendEmailOptions` when sending an email. Using the upload endpoints prior to sending mean attachments can easily be reused.
+
+### Example 
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import mailslurp
+
+let file = URL(string: "https://example.com")! // URL | file
+let contentType = "contentType_example" // String | Optional content type of attachment (optional)
+let filename = "filename_example" // String | Optional name of file (optional)
+let xFilename = "xFilename_example" // String | Optional content type header of attachment (optional)
+
+// Upload an attachment for sending using a Multipart Form request. Returns an array whose first element is the ID of the uploaded attachment.
+AttachmentControllerAPI.uploadMultipartForm(file: file, contentType: contentType, filename: filename, xFilename: xFilename) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **file** | **URL** | file | 
+ **contentType** | **String** | Optional content type of attachment | [optional] 
+ **filename** | **String** | Optional name of file | [optional] 
+ **xFilename** | **String** | Optional content type header of attachment | [optional] 
+
+### Return type
+
+**[String]**
+
+### Authorization
+
+[API_KEY](../README#API_KEY)
+
+### HTTP request headers
+
+ - **Content-Type**: multipart/form-data
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README#documentation-for-api-endpoints) [[Back to Model list]](../README#documentation-for-models) [[Back to README]](../README)
+
