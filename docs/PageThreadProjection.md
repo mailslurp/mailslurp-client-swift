@@ -1,0 +1,20 @@
+# PageThreadProjection
+
+## Properties
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**content** | [ThreadProjection] |  | [optional] 
+**empty** | **Bool** |  | [optional] 
+**first** | **Bool** |  | [optional] 
+**last** | **Bool** |  | [optional] 
+**number** | **Int** |  | [optional] 
+**numberOfElements** | **Int** |  | [optional] 
+**pageable** | [**Pageable**](Pageable) |  | [optional] 
+**size** | **Int** |  | [optional] 
+**sort** | [**Sort**](Sort) |  | [optional] 
+**totalElements** | **Int64** |  | [optional] 
+**totalPages** | **Int** |  | [optional] 
+
+[[Back to Model list]](../README#documentation-for-models) [[Back to API list]](../README#documentation-for-api-endpoints) [[Back to README]](../README)
+
+
