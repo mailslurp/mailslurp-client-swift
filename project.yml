@@ -1,0 +1,14 @@
+name: mailslurp
+targets:
+  mailslurp:
+    type: framework
+    platform: iOS
+    deploymentTarget: "9.0"
+    sources: [mailslurp]
+    info:
+      path: ./Info.plist
+      version: 12.2.0
+    settings:
+      APPLICATION_EXTENSION_API_ONLY: true
+    scheme: {}
+    
