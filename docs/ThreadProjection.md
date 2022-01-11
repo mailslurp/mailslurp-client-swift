@@ -1,0 +1,20 @@
+# ThreadProjection
+
+## Properties
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**name** | **String** |  | [optional] 
+**_id** | **UUID** |  | 
+**createdAt** | **Date** |  | 
+**subject** | **String** |  | [optional] 
+**userId** | **UUID** |  | 
+**inboxId** | **UUID** |  | 
+**to** | **[String]** |  | 
+**bcc** | **[String]** |  | [optional] 
+**cc** | **[String]** |  | [optional] 
+**updatedAt** | **Date** |  | 
+**aliasId** | **UUID** |  | 
+
+[[Back to Model list]](../README#documentation-for-models) [[Back to API list]](../README#documentation-for-api-endpoints) [[Back to README]](../README)
+
+

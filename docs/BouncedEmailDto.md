@@ -1,0 +1,19 @@
+# BouncedEmailDto
+
+## Properties
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**_id** | **UUID** |  | [optional] 
+**userId** | **UUID** |  | 
+**notificationType** | **String** |  | 
+**sentToRecipients** | **[String]** |  | [optional] 
+**sender** | **String** |  | 
+**bounceMta** | **String** |  | [optional] 
+**bounceType** | **String** |  | [optional] 
+**bounceRecipients** | **[String]** |  | [optional] 
+**bounceSubType** | **String** |  | [optional] 
+**createdAt** | **Date** |  | 
+
+[[Back to Model list]](../README#documentation-for-models) [[Back to API list]](../README#documentation-for-api-endpoints) [[Back to README]](../README)
+
+
