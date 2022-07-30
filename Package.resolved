@@ -1,0 +1,25 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "AnyCodable",
+        "repositoryURL": "https://github.com/Flight-School/AnyCodable",
+        "state": {
+          "branch": null,
+          "revision": "38b05fc9f86501ef8018aa90cf3d83bd97f74067",
+          "version": "0.4.0"
+        }
+      },
+      {
+        "package": "PromiseKit",
+        "repositoryURL": "https://github.com/mxcl/PromiseKit.git",
+        "state": {
+          "branch": null,
+          "revision": "ed3192004c0b00b4b3d7baa9578ee655c66faae3",
+          "version": "6.18.0"
+        }
+      }
+    ]
+  },
+  "version": 1
+}
