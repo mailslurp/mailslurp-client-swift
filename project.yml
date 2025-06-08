@@ -1,0 +1,15 @@
+name: mailslurp
+targets:
+  mailslurp:
+    type: framework
+    platform: iOS
+    deploymentTarget: "11.0"
+    sources: [mailslurp]
+    info:
+      path: ./Info.plist
+      version: 16.1.5
+    settings:
+      APPLICATION_EXTENSION_API_ONLY: true
+    scheme: {}
+    dependencies:
+    - carthage: PromiseKit
